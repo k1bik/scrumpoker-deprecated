@@ -1,0 +1,14 @@
+<div class="profile-wrapper">
+  <% if current_user.avatar.attached? %>
+    <%= image_tag current_user.avatar, class: 'rounded-image-big' %>
+  <% else %>
+    <%= image_tag 'default-avatar.jpg', class: "rounded-image-big" %>
+  <% end %>
+  <h2><%= current_user.name %></h2>
+  <%= button_to 'Edit', edit_user_path, method: :get, class: 'button' %>
+  <h1>My Rooms</h1>
+
+  <%= turbo_frame_tag "my_rooms" do %>
+    <%= render 'users/my_rooms', rooms: current_user.rooms %>
+  <% end %>
+</div>

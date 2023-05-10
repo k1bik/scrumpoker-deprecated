@@ -1,0 +1,4 @@
+class UserRoomRelationship < ApplicationRecord
+  belongs_to :user
+  belongs_to :room
+end

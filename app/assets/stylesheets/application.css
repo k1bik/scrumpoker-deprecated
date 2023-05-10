@@ -1,0 +1,61 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  background: rgb(227,201,212);
+  background: radial-gradient(circle, rgba(227,201,212,1) 0%, rgba(223,227,215,1) 100%);
+  margin: 0;
+}
+
+.main-wrapper {
+  width: 1200px;
+  margin: auto;
+}
+
+.rounded-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.rounded-image-big {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.modal {
+  width: 500px;
+  position: fixed;
+  z-index: 1;
+  padding: 2em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19);
+}
+
+.modal-wrapper {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(103, 99, 99, 0.52);
+}

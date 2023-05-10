@@ -1,0 +1,23 @@
+.form-wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.form-input {
+  padding: 15px 25px;
+  font-size: 16px;
+  border: 1px grey solid;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}

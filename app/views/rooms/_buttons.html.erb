@@ -1,0 +1,5 @@
+<% if room.show_estimates %>
+  <%= button_to "Hide Results", '/toogle_estimates', params: {room_id: room.id, show: false}, class: 'button'  %>
+<% else %>
+  <%= button_to "Show results", '/toogle_estimates', params: {room_id: room.id, show: true}, class: 'button' %>
+<% end %>

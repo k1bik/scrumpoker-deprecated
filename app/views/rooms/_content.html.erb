@@ -1,0 +1,13 @@
+<% users = defined?(sort).nil? ? room.users.not_hidden : room.users.not_hidden.sorted_by_estimate %>
+
+<% users.each do |user| %>
+  <div class="rooms-item-wrapper">
+    <div class="rooms-item">
+      <span><%= user.name || user.email %></span>
+      <%= turbo_frame_tag "estimate_room_#{room.id}_user_#{user.id}" do %>
+        <%= render 'rooms/estimate', estimate: user.room_estimate(room.id), room: room, user: user %>
+      <% end %>
+    </div>
+    <%= button_to "Hide", '/toogle_hidden', method: :post, params: {room_id: room, user_id: user, hide: true}, class: 'button' %>
+  </div>
+<% end %>

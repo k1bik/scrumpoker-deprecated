@@ -1,0 +1,11 @@
+<div class="rooms-wrapper">
+  <% rooms.each do |room| %>
+    <div class="rooms-item-wrapper">
+      <div class="rooms-item">
+        <span><%= room.name %></span>
+      </div>
+      <%= button_to "Join", room_path(room), method: :get, data: {turbo: false}, class: 'button' %>
+      <%= button_to "Exit", '/exit_room', method: :delete, params: {room_id: room}, form: { data: { turbo_confirm: "Are you sure?" }}, class: 'button' %>
+    </div>
+  <% end %>
+</div>

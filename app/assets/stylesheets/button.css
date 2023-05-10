@@ -1,0 +1,32 @@
+.button {
+  width: max-content;
+  padding: 15px 25px;
+  font-size: 16px;
+  background-color: whitesmoke;
+  border: 1px grey solid;
+  cursor: pointer;
+  color: black;
+  transition: background-color .5s, color .3s;
+}
+
+.button:hover {
+  color: whitesmoke;
+  background-color: grey;
+  border-color: black;
+}
+
+.button:active {
+  background-color: black;
+}
+
+.room-buttons-wpapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.button-active {
+  background-color: grey;
+  border-color: black;
+}

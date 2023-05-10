@@ -1,0 +1,62 @@
+.rooms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.rooms-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: auto;
+  row-gap: 16px;
+}
+
+.rooms-item-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.rooms-item {
+  display: flex;
+  width: 100%;
+  color: black;
+  font-size: 16px;
+  background-color: whitesmoke;
+  padding: 15px 25px;
+  justify-content: space-between;
+  border: 1px solid grey;
+}
+
+.owner-block-wpapper {
+  width: 250px;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+}
+
+.hidden-user-wrapper {
+  row-gap: 12px;
+  border: 1px grey solid;
+  padding: 15px 25px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rooms-item-profile {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  align-items: center;
+}

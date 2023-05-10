@@ -1,0 +1,12 @@
+.flash-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: lightblue;
+  color: blue;
+  font-size: 16px;
+  z-index: 2;
+}

@@ -1,0 +1,16 @@
+<div class="rooms-header">
+  <h1>All Rooms</h1>
+  <%= link_to "Create new room", new_room_path, data: {turbo_frame: "modal"} %>
+</div>
+
+<div class="rooms-wrapper">
+  <% @rooms.each do |room| %>
+    <div class="rooms-item-wrapper">
+      <div class="rooms-item">
+        <span><%= room.name %></span>
+        <span>Players: <%= room.users.not_hidden.size %></span>
+      </div>
+      <%= button_to "Join", room_path(room), method: :get, class: 'button' %>
+    </div>
+  <% end %>
+</div>

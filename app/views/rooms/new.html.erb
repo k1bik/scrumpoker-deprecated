@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "modal" do %>
+  <div
+    data-controller="modals"
+    data-action="keyup@window->modals#closeWithKeyboard click@window->modals#closeBackground"
+    class="modal-wrapper"
+  >
+    <div data-modals-target="modal" class="modal">
+      <%= form_with(model: @room, url: rooms_path, method: :post, html: {class: 'form-content'}) do |form| %>
+        <%= form.label :name, "Name:" %>
+        <%= form.text_field :name, class: 'form-input', autofocus: true %>
+        <%= form.label :estimates, "Estimates:" %>
+        <%= form.text_field :estimates, class: 'form-input', placeholder: "1,2,3,4,5,6,7" %>
+        <div class="form-buttons">
+          <%= form.submit "Cancel", class: 'button', data: {action: "modals#close"} %>
+          <%= form.submit "Create", class: 'button', data: {turbo: false} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

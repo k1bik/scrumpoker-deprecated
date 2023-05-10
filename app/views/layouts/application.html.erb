@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scrumpoker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= favicon_link_tag asset_path('cards-favicon.jpg') %>
+  </head>
+
+  <body>
+    <div id="flash"><%= render partial: "layouts/flash" %></div>
+    <header class="navbar-wrapper">
+      <div class="navbar-content">
+        <h1><%= link_to 'Scrumpoker', root_path %></h1>
+        <% I18n.available_locales.each do |locale| %>
+          <%= link_to t(locale), params.permit(:locale).merge({locale: locale}) %>
+        <% end %>
+        <div class="dropdown">
+          <% if current_user %>
+            <%= render 'layouts/avatar', user: current_user %>
+            <div class="dropdown-content">
+              <%= button_to "Profile", user_path, method: :get, class: 'button' %>
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'button' %>
+            </div>
+          <% end %>
+        </div>
+
+        <% if !current_user %>
+          <%= button_to "Sigh up", new_user_registration_path, method: :get %>
+          <%= button_to "Log in", new_user_session_path, method: :get %>
+        <% end %>
+      </div>
+    </header>
+    <main class="main-wrapper">
+      <%= turbo_frame_tag "modal" %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

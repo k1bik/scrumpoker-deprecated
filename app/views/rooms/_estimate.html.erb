@@ -1,0 +1,7 @@
+<% if room.show_estimates %>
+  <span><%= estimate %></span>
+<% elsif estimate?(user, room) %>
+  <span></span>
+<% else %>
+  <span>hidden</span>
+<% end %>

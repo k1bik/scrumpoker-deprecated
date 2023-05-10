@@ -1,0 +1,6 @@
+<% room.users.hidden.each do |user| %>
+  <div class="hidden-user-wrapper">
+    <%= user.name || user.email %>
+    <%= button_to "X", '/toogle_hidden', method: :post, params: {room_id: room, user_id: user, hide: false} %>
+  </div>
+<% end %>

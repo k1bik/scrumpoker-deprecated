@@ -1,0 +1,6 @@
+<div class="estimates-wrapper">
+  <% room.estimates.split(",").each do |estimate| %>
+    <%= button_to "#{estimate}", estimate_path(estimate), method: :put, disabled: user_estimate(user, room) == estimate, params: {room_id: room, estimate: estimate},
+     class: "button #{user_estimate(user, room) == estimate ? "button-active" : ""}" %>
+  <% end %>
+</div>
