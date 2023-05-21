@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @rooms = Room.order(:name)
+    @rooms = Room.search(params[:search])
   end
 
   def show
