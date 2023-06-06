@@ -1,7 +1,36 @@
 .estimates-wrapper {
+  width: 1000px;
   display: flex;
-  flex-direction: row;
-  column-gap: 8px;
+  flex-flow: wrap;
   justify-content: center;
-  margin-bottom: 60px;
+  gap: 1rem;
+  margin: auto;
+}
+
+.estimate-card {
+  width: 100px;
+  height: 160px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: .5rem;
+  background: whitesmoke;
+  transition: background-color .2s;
+}
+
+.estimate-card:hover {
+  background-color: white;
+  color: black;
+}
+
+.estimate-card-active, .estimate-card-active:hover {
+  background-color: gray;
+  color: white;
+}
+
+.estimate-card-title {
+  font-size: 2.5rem;
+}
+
+.estimate-mark {
+  font-size: 2rem;
 }

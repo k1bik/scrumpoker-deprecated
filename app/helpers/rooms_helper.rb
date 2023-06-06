@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RoomsHelper
   def estimate?(user, room)
     UserRoomRelationship.find_by(user:, room:).estimate.nil?

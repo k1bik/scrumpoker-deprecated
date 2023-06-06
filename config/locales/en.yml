@@ -1,3 +1,6 @@
 en:
   hello: "Hello world"
+  hide_results: 'Hide results'
   hidden_users: "Hidden users"
+  reset: "Reset"
+  show_results: "Show results"

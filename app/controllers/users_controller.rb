@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
@@ -7,9 +9,9 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to user_path, notice: "Successfuly Updated"
+      redirect_to user_path, notice: 'Successfuly Updated'
     else
-      redirect_to user_path, alert: "Something went wrong"
+      redirect_to user_path, alert: 'Something went wrong'
     end
   end
 

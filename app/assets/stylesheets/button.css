@@ -1,29 +1,28 @@
 .button {
   width: max-content;
-  padding: 15px 25px;
-  font-size: 16px;
-  background-color: whitesmoke;
-  border: 1px grey solid;
+  padding: 0;
+  font-size: var(--font-size);
+  background-color: transparent;
+  border: 0;
   cursor: pointer;
   color: black;
   transition: background-color .5s, color .3s;
 }
 
 .button:hover {
-  color: whitesmoke;
-  background-color: grey;
-  border-color: black;
+  color: var(--blue);
 }
 
 .button:active {
-  background-color: black;
+  color: black;
+  background-color: transparent;
 }
 
-.room-buttons-wpapper {
+.room-buttons-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin: 3rem 0;
 }
 
 .button-active {

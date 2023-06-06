@@ -1,20 +1,29 @@
-<div class="rooms-header">
-  <h1>All Rooms</h1>
-  <%= link_to "Create new room", new_room_path, data: {turbo_frame: "modal"} %>
-  <%= form_tag rooms_path, method: :get do %>
-    <%= text_field_tag(:search, params[:search], placeholder: 'Find room') %>
-    <%= submit_tag("Search") %>
-  <% end %>
+<div class="room-list-header">
+  <h1>Room list</h1>
+  <%= button_to "Create new room", new_room_path, data: {turbo_frame: "modal"}, method: :get, class: "button" %>
 </div>
+<%= form_tag rooms_path, method: :get, class: "search-field-wrapper" do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Find room", autofocus: true, class: "search-field" %>
+  <%= submit_tag "Search", class: "button" %>
+<% end %>
 
-<div class="rooms-wrapper">
-  <% @rooms.each do |room| %>
-    <div class="rooms-item-wrapper">
-      <div class="rooms-item">
-        <span><%= room.name %></span>
-        <span>Players: <%= room.users.not_hidden.size %></span>
-      </div>
-      <%= button_to "Join", room_path(room), method: :get, class: 'button' %>
+<div class="items-wrapper">
+  <% if @rooms.empty? %>
+    <div class="no-data-title">
+      Nothing Found
     </div>
+  <% else %>
+    <% @rooms.each do |room| %>
+      <div class="item-wrapper">
+        <div class="item">
+          <%= room.name %>
+          <div class="item-controls">
+            Players: <%= room.users.not_hidden.size %>
+            <span>|</span>
+            <%= button_to "Join", room_path(room), method: :get, class: "button" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>

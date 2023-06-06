@@ -1,11 +1,20 @@
-<div class="rooms-wrapper">
-  <% rooms.each do |room| %>
-    <div class="rooms-item-wrapper">
-      <div class="rooms-item">
-        <span><%= room.name %></span>
+<div class="items-wrapper">
+  <% if current_user.rooms.present? %>
+    <% rooms.each do |room| %>
+      <div class="item-wrapper">
+        <div class="item">
+          <%= room.name %>
+          <div class="item-controls">
+            <%= button_to "Join", room_path(room), method: :get, data: {turbo: false}, class: "button" %>
+            <span>|</span>
+            <%= button_to "Exit", exit_room_path, method: :delete, params: {room_id: room}, form: {data: {turbo_confirm: "Are you sure?"}}, class: "button" %>
+          </div>
+        </div>
       </div>
-      <%= button_to "Join", room_path(room), method: :get, data: {turbo: false}, class: 'button' %>
-      <%= button_to "Exit", '/exit_room', method: :delete, params: {room_id: room}, form: { data: { turbo_confirm: "Are you sure?" }}, class: 'button' %>
+    <% end %>
+  <% else %>
+    <div class="no-data-title">
+      Nothing Found
     </div>
   <% end %>
 </div>

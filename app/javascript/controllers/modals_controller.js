@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["modal"]
+  static targets = ["modal", "form"]
 
   close() {
     const modal = document.getElementById("modal")
@@ -11,7 +11,7 @@ export default class extends Controller {
   }
 
   closeWithKeyboard(e) {
-    if (e.code == "Escape") this.close()
+    if (e.code === "Escape") this.close()
   }
 
   closeBackground(e) {
