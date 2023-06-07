@@ -2,7 +2,6 @@
 
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :authenticate_user!, only: :index
 
   def index
     @rooms = Room.search(params[:search])
