@@ -1,0 +1,28 @@
+.copy-link {
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.copy-link:hover {
+  color: var(--blue);
+}
+
+.copy-link:active {
+  color: black;
+}
+
+.copy-link:active svg path {
+  stroke: black !important;
+}
+
+.copy-link:hover svg path {
+  stroke: var(--blue);
+}
+
+.copy-link-title {
+  font-size: var(--font-size);
+}
+

@@ -1,0 +1,36 @@
+.registration-form-wrapper {
+  width: 800px;
+  gap: 2rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.registration-form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.registration-form-checkbox {
+  width: 1rem;
+  height: 1rem;
+}
+
+.registration-form-field-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-form-field-input {
+  padding: .5rem 1rem;
+  font-size: var(--font-size);
+  border: 1px solid black;
+}
+

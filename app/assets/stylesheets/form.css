@@ -1,5 +1,5 @@
 .form-wrapper {
-  margin-top: 50px;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
 }
@@ -13,11 +13,12 @@
 
 .form-input {
   padding: 15px 25px;
-  font-size: 16px;
+  font-size: var(--font-size);
   border: 1px grey solid;
 }
 
 .form-buttons {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
 }

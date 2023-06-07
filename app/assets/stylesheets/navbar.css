@@ -1,14 +1,29 @@
 .navbar-wrapper {
+  height: 5rem;
   background-color: whitesmoke;
   border-bottom: 1px gray solid;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .navbar-content {
+  height: 100%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  width: 80%;
   margin: auto;
+}
+
+.navbar-title {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-logout-buttons {
+  color: black;
+  font-size: var(--font-size);
+  gap: 1rem;
+  display: flex;
 }

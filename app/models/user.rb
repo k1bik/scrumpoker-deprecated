@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: [:google_oauth2]
   has_one :room
   has_one_attached :avatar
   has_many :user_room_relationships
   has_many :rooms, through: :user_room_relationships
 
-  scope :not_hidden, -> { includes(:user_room_relationships).where(user_room_relationships: {hidden: false}) }
-  scope :hidden, -> { includes(:user_room_relationships).where(user_room_relationships: {hidden: true}) }
+  scope :not_hidden, -> { includes(:user_room_relationships).where(user_room_relationships: { hidden: false }) }
+  scope :hidden, -> { includes(:user_room_relationships).where(user_room_relationships: { hidden: true }) }
   scope :sorted_by_estimate, -> { joins(:user_room_relationships).order('user_room_relationships.estimate asc') }
 
   def room_estimate(room_id)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EstimatesController < ApplicationController
   def update
     user_room_relationship = UserRoomRelationship.find_by(room_id: params[:room_id], user: current_user)
@@ -7,22 +9,21 @@ class EstimatesController < ApplicationController
     if user_room_relationship.update(estimate: params[:estimate])
       update_turbo(
         channel: "room_#{params[:room_id]}",
-        partial: "rooms/estimate",
+        partial: 'rooms/estimate',
         locals: { estimate: params[:estimate], room: Room.find(params[:room_id]), user: current_user },
         target: "estimate_room_#{params[:room_id]}_user_#{current_user.id}"
       )
     end
 
     respond_to do |format|
-      format.turbo_stream do 
+      format.turbo_stream do
         render turbo_stream: turbo_stream.update(
           "room_header_#{params[:room_id]}",
-          partial: "rooms/header",
-          locals:  { room: Room.find(params[:room_id]), user: current_user }
+          partial: 'rooms/header',
+          locals: { room: Room.find(params[:room_id]), user: current_user }
         )
       end
     end
-
   end
 
   def toogle_estimates
@@ -34,15 +35,22 @@ class EstimatesController < ApplicationController
 
     update_turbo(
       channel: "room_#{room.id}",
-      partial: "rooms/content",
-      locals: { room: room, sort: params[:show] },
+      partial: 'rooms/content',
+      locals: { room:, sort: params[:show], owner: false },
+      target: "room_content_#{room.id}"
+    )
+
+    update_turbo(
+      channel: "room_owner_#{room.id}",
+      partial: 'rooms/content',
+      locals: { room:, sort: params[:show], owner: true },
       target: "room_content_#{room.id}"
     )
 
     update_turbo(
       channel: "room_#{params[:room_id]}",
-      partial: "rooms/buttons",
-      locals: { room: room },
+      partial: 'rooms/buttons',
+      locals: { room: },
       target: "room_buttons_#{params[:room_id]}"
     )
   end
@@ -54,19 +62,19 @@ class EstimatesController < ApplicationController
 
     update_turbo(
       channel: "room_#{params[:room_id]}",
-      partial: "rooms/header",
-      locals: { room: room, user: current_user },
+      partial: 'rooms/header',
+      locals: { room:, user: current_user },
       target: "room_header_#{params[:room_id]}"
     )
-    
+
     update_room_content(room)
 
     return if room.show_estimates
 
     update_turbo(
       channel: "room_#{params[:room_id]}",
-      partial: "rooms/buttons",
-      locals: { room: room },
+      partial: 'rooms/buttons',
+      locals: { room: },
       target: "room_buttons_#{params[:room_id]}"
     )
   end

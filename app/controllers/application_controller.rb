@@ -1,6 +1,6 @@
-class ApplicationController < ActionController::Base
-  around_action :switch_locale
+# frozen_string_literal: true
 
+class ApplicationController < ActionController::Base
   def update_turbo(channel:, partial:, locals:, target:)
     Turbo::StreamsChannel.broadcast_update_to(channel, partial:, locals:, target:)
   end
@@ -8,26 +8,16 @@ class ApplicationController < ActionController::Base
   def update_room_content(room)
     update_turbo(
       channel: "room_#{room.id}",
-      partial: "rooms/content",
-      locals: { room: room },
+      partial: 'rooms/content',
+      locals: { room:, owner: false },
       target: "room_content_#{room.id}"
     )
-  end
 
-  private
-
-  def switch_locale(&action)
-    locale = locale_from_url || I18n.default_locale
-    I18n.with_locale locale, &action
-  end
-
-  def locale_from_url
-    locale = params[:locale]
-
-    return locale if I18n.available_locales.map(&:to_s).include?(locale)
-  end
-
-  def default_url_options
-    { locale: I18n.locale }
+    update_turbo(
+      channel: "room_owner_#{room.id}",
+      partial: 'rooms/content',
+      locals: { room:, owner: true },
+      target: "room_content_#{room.id}"
+    )
   end
 end

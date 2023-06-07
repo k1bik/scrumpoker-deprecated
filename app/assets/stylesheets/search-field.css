@@ -1,0 +1,14 @@
+.search-field-wrapper {
+  height: 3rem;
+  gap: 1rem;
+  display: flex;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.search-field {
+  border: 1px solid black;
+  padding: 1rem;
+  font-size: var(--font-size);
+  width: 100%;
+}

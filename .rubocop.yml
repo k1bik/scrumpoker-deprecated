@@ -1,0 +1,17 @@
+AllCops:
+  TargetRubyVersion: 3.2.0
+  Exclude:
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'config/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/AbcSize:
+  Enabled: false

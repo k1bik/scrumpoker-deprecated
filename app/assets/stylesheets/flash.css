@@ -1,12 +1,18 @@
 .flash-wrapper {
-  position: fixed;
-  top: 20px;
-  right: 0;
-  display: flex;
   align-items: center;
-  padding: 10px;
   background-color: lightblue;
-  color: blue;
-  font-size: 16px;
+  border-radius: 1rem;
+  color: var(--blue);
+  display: flex;
+  font-size: var(--font-size);
+  gap: 1rem;
+  padding: .5rem 1.5rem;
+  position: fixed;
+  right: 0;
+  top: 1rem;
   z-index: 2;
+}
+
+.flash-wrapper .button {
+  margin-top: 5px;
 }

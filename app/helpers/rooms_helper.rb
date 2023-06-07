@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module RoomsHelper
   def estimate?(user, room)
-    UserRoomRelationship.find_by(user: user, room: room).estimate.nil?
+    UserRoomRelationship.find_by(user:, room:).estimate.nil?
   end
 
   def user_estimate(user, room)
-    UserRoomRelationship.find_by(user: user, room: room).estimate
+    UserRoomRelationship.find_by(user:, room:).estimate
   end
 end

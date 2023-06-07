@@ -8,30 +8,35 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= favicon_link_tag asset_path('cards-favicon.jpg') %>
+    <%= favicon_link_tag asset_path('cards-favicon.png') %>
   </head>
 
   <body>
-    <div id="flash"><%= render partial: "layouts/flash" %></div>
+    <div id="flash">
+      <%= render partial: "layouts/flash" %>
+    </div>
     <header class="navbar-wrapper">
       <div class="navbar-content">
-        <h1><%= link_to 'Scrumpoker', root_path %></h1>
-        <% I18n.available_locales.each do |locale| %>
-          <%= link_to t(locale), params.permit(:locale).merge({locale: locale}) %>
-        <% end %>
-        <div class="dropdown">
-          <% if current_user %>
-            <%= render 'layouts/avatar', user: current_user %>
-            <div class="dropdown-content">
-              <%= button_to "Profile", user_path, method: :get, class: 'button' %>
-              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'button' %>
-            </div>
-          <% end %>
+        <h1>
+          <%= link_to 'Scrumpoker', root_path, class: "navbar-title" %>
+        </h1>
+        <div class="navbaar">
+          <div class="dropdown">
+            <% if current_user %>
+              <%= render 'layouts/avatar', user: current_user %>
+              <div class="dropdown-content">
+                <%= button_to "Profile", user_path, method: :get, class: 'button' %>
+                <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'button' %>
+              </div>
+            <% end %>
+          </div>
         </div>
-
         <% if !current_user %>
-          <%= button_to "Sigh up", new_user_registration_path, method: :get %>
-          <%= button_to "Log in", new_user_session_path, method: :get %>
+          <div class="navbar-logout-buttons">
+            <%= button_to "Sigh up", new_user_registration_path, method: :get, class: "button" %>
+            <span>|</span>
+            <%= button_to "Log in", new_user_session_path, method: :get, class: "button" %>
+          </div>
         <% end %>
       </div>
     </header>
