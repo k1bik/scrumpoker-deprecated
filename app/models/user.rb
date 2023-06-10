@@ -12,7 +12,10 @@ class User < ApplicationRecord
 
   scope :not_hidden, -> { includes(:user_room_relationships).where(user_room_relationships: { hidden: false }) }
   scope :hidden, -> { includes(:user_room_relationships).where(user_room_relationships: { hidden: true }) }
-  scope :sorted_by_estimate, -> { joins(:user_room_relationships).order('user_room_relationships.estimate asc') }
+  scope :sorted_by_estimate,
+        lambda {
+          joins(:user_room_relationships).order(Arel.sql('CAST(user_room_relationships.estimate AS INT) asc'))
+        }
 
   def room_estimate(room_id)
     user_room_relationships.find_by(room_id:).estimate

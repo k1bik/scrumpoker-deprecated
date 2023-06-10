@@ -1,5 +1,5 @@
 <% if room.show_estimates %>
-  <%= button_to t("hide_results"), toogle_estimates_path, params: {room_id: room.id, show: false}, class: "button" %>
+  <%= button_to t("hide_results"), toogle_estimates_path, params: {room_id: room.id, show: false}, class: "button-border" %>
 <% else %>
-  <%= button_to t("show_results"), toogle_estimates_path, params: {room_id: room.id, show: true}, class: "button" %>
+  <%= button_to t("show_results"), toogle_estimates_path, params: {room_id: room.id, show: true}, class: "button-border" %>
 <% end %>

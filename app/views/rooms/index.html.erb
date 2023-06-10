@@ -1,10 +1,10 @@
 <div class="room-list-header">
   <h1>Room list</h1>
-  <%= button_to "Create new room", new_room_path, data: {turbo_frame: "modal"}, method: :get, class: "button" %>
+  <%= button_to "Create new room", new_room_path, data: {turbo_frame: "modal"}, method: :get, class: "button-border" %>
 </div>
 <%= form_tag rooms_path, method: :get, class: "search-field-wrapper" do %>
   <%= text_field_tag :search, params[:search], placeholder: "Find room", autofocus: true, class: "search-field" %>
-  <%= submit_tag "Search", class: "button" %>
+  <%= submit_tag "Search", class: "button-border" %>
 <% end %>
 
 <div class="items-wrapper">
@@ -20,7 +20,7 @@
           <div class="item-controls">
             Players: <%= room.users.not_hidden.size %>
             <span>|</span>
-            <%= button_to "Join", room_path(room), method: :get, class: "button" %>
+            <%= button_to "Join", room_path(room), method: :get, class: "button-green" %>
           </div>
         </div>
       </div>

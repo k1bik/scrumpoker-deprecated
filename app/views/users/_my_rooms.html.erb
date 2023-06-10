@@ -5,9 +5,9 @@
         <div class="item">
           <%= room.name %>
           <div class="item-controls">
-            <%= button_to "Join", room_path(room), method: :get, data: {turbo: false}, class: "button" %>
+            <%= button_to "Join", room_path(room), method: :get, data: {turbo: false}, class: "button-green" %>
             <span>|</span>
-            <%= button_to "Exit", exit_room_path, method: :delete, params: {room_id: room}, form: {data: {turbo_confirm: "Are you sure?"}}, class: "button" %>
+            <%= button_to "Exit", exit_room_path, method: :delete, params: {room_id: room}, form: {data: {turbo_confirm: "Are you sure?"}}, class: "button-red" %>
           </div>
         </div>
       </div>
