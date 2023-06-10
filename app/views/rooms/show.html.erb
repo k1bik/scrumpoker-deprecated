@@ -41,7 +41,7 @@
 
 <div class="users-wrapper">
   <div class="room-buttons-wrapper">
-    <%= button_to t('reset'), reset_estimates_path, params: {room_id: @room.id}, class: 'button' %>
+    <%= button_to t('reset'), reset_estimates_path, params: {room_id: @room.id}, class: 'button-border' %>
     <%= turbo_frame_tag "room_buttons_#{@room.id}" do %>
       <%= render 'buttons', room: @room %>  
     <% end %>
