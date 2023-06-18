@@ -1,7 +1,7 @@
 <div class="hidden-user-wrapper">
   <% if room.users.hidden.present? %>
     <div class="hidden-users-title">
-      <%= t('hidden_users') %>
+      Hidden users
     </div>
   <% end %>
   <% room.users.hidden.each do |user| %>

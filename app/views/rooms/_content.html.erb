@@ -21,7 +21,7 @@
             <%= user.name || user.email %>
           </div>
           <%= turbo_frame_tag "estimate_room_#{room.id}_user_#{user.id}" do %>
-            <%= render 'rooms/estimate', estimate: user.room_estimate(room.id), room: room, user: user %>
+            <%= render 'rooms/estimate', estimate: user.room_estimate(room.id), room:, user: %>
           <% end %>
         </div>
       </div>

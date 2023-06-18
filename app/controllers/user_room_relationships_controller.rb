@@ -8,7 +8,7 @@ class UserRoomRelationshipsController < ApplicationController
 
     user_room_relationship.update(hidden: params[:hide])
 
-    room = Room.find(params[:room_id])
+    room = Room.includes(:users).find(params[:room_id])
 
     update_room_content(room)
 

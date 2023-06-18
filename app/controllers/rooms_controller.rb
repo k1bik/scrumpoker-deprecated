@@ -2,19 +2,13 @@
 
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_room, only: %i[show edit update destroy]
 
   def index
     @rooms = Room.search(params[:search])
   end
 
   def show
-    @room = Room.find_by_id(params[:id])
-
-    if @room.nil?
-      redirect_to rooms_path, alert: 'Something went wrong'
-      return
-    end
-
     return if UserRoomRelationship.find_by(room: @room, user: current_user)
 
     @room.add_user(current_user)
@@ -26,24 +20,20 @@ class RoomsController < ApplicationController
     @room = Room.new
   end
 
-  def edit
-    @room = Room.find(params[:id])
-  end
+  def edit; end
 
   def update
-    room = Room.find(params[:id])
-
-    if room.update(room_params)
-      redirect_to room_path(room), notice: 'Successfully updated!'
+    if @room.update(room_params)
+      redirect_to room_path(@room), notice: 'Successfully updated!'
 
       update_turbo(
-        channel: "room_#{room.id}",
+        channel: "room_#{@room.id}",
         partial: 'rooms/header',
-        locals: { room:, user: current_user },
-        target: "room_header_#{room.id}"
+        locals: { room: @room, user: current_user },
+        target: "room_header_#{@room.id}"
       )
     else
-      redirect_to edit_room_path(room), alert: 'Something went wrong'
+      redirect_to edit_room_path(@room), notice: 'Something went wrong'
     end
   end
 
@@ -53,8 +43,11 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    Room.find(params[:id]).destroy
-    redirect_to rooms_path, notice: 'Successfully deleted!'
+    if @room.destroy
+      redirect_to rooms_path, notice: 'Successfully deleted!'
+    else
+      redirect_to room_path(@room), notice: 'Something went wrong!'
+    end
   end
 
   def exit_room
@@ -74,6 +67,10 @@ class RoomsController < ApplicationController
   end
 
   private
+
+  def load_room
+    @room = Room.includes(:users).find(params[:id])
+  end
 
   def room_params
     params.require(:room).permit(:estimates, :name)

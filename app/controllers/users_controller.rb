@@ -8,11 +8,8 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if current_user.update(user_params)
-      redirect_to user_path, notice: 'Successfuly Updated'
-    else
-      redirect_to user_path, alert: 'Something went wrong'
-    end
+    notice = current_user.update(user_params) ? 'Successfuly Updated' : 'Something went wrong'
+    redirect_to user_path, notice:
   end
 
   private
